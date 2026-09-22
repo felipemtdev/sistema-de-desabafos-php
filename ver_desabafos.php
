@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Ver Desabafos</title>
+
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+ <style>
+    body {
+      background:
+        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+        url('imagens/fundo.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      color: white;
+    }
+
+
+    .card {
+      background-color: white;
+      border-radius: 15px;
+      color: #000;
+    }
+  </style>
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+  <h2>Desabafos 💭</h2>
+
+
+   <!-- IMAGEM -->
+  <img
+    src="imagens/caderninho.png"
+    alt="caderno aberto"
+    class="img-fluid mb-4"
+    style="max-width: 220px;"
+  >
+
+
+  <?php
+
+
+  if(file_exists("desabafos.txt")) {
+
+
+    $arquivo = file_get_contents("desabafos.txt");
+
+
+    $desabafos = explode("###", $arquivo);
+
+
+    foreach($desabafos as $desabafo) {
+
+
+      if(trim($desabafo) != "") {
+
+
+        ?>
+
+
+        <div class="card">
+          <?php echo $desabafo; ?>
+        </div>
+
+
+        <?php
+
+
+      }
+
+
+    }
+
+
+  }
+
+
+  ?>
+
+
+  <a href="home.php" class="btn btn-light">
+    Voltar
+  </a>
+
+
+</div>
+
+
+</body>
+</html>
